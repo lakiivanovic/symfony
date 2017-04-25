@@ -1,0 +1,29 @@
+{# empty Twig template #}
+{% extends "base.html.twig" %}
+
+{% block body %}
+    
+    <p>{{ text|upper }}</p>
+    <br>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Naziv</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for artikal in artikli %}
+                <tr>
+                    <td>{{ artikal['id'] }}</td>
+                    <td>{{ artikal['title'] }}</td>
+                    <td><a href="{{ path('article_show', { 'name' : artikal['title'] }) }}">Show</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+
+{% endblock %}
