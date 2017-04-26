@@ -3,8 +3,8 @@
 
 {% block body %}
     
-    <h2>Proizvod #{{ artikal['id'] }}</h2>
-    <h3>Author: {{ artikal['author'] }}</h3>
-    <p>Naziv: {{ artikal['title'] }}</p>
+    <h2>{{ artikal.name }}</h2>
+    <p>Kategorija: {{ artikal.category }}</p>
+    <p>Cena: {{ artikal.price }}</p>
     
 {% endblock %}

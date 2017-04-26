@@ -39,10 +39,15 @@ class Article
     /**
      * @var string
      * @Assert\NotBlank()
-     * @Assert\Type(type="float")
+     * @Assert\Type(
+     * type="float",
+     * message = "Mora biti broj"
+     * )
+     
      * @ORM\Column(name="price", type="decimal", precision=10, scale=2)
      */
     private $price;
+
     /**
      * Get id
      *
@@ -115,4 +120,6 @@ class Article
     {
         return $this->price;
     }
+    
+ 
 }
