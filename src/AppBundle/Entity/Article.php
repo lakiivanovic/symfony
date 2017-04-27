@@ -1,7 +1,9 @@
 <?php
+
 namespace AppBundle\Entity;
+
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * Article
  *
@@ -12,41 +14,55 @@ class Article
 {
     /**
      * @var int
-     * 
+     * @
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
     /**
      * @var string
      * @Assert\NotBlank()
-     * @Assert\Length(
-     *      min = 2,
-     *      max = 50,
-     *      minMessage = "Naziv artikla ne može biti kraći od {{ limit }} karaktera",
-     *      maxMessage = "Naziv artikla ne može biti duži od {{ limit }} karaktera"
-     * )
-     * @ORM\Column(name="name", type="string", length=100)
+     * @ORM\Column(name="title", type="text")
      */
-    private $name;
+    private $title;
+
     /**
      * @var string
      * @Assert\NotBlank()
-     * @ORM\Column(name="category", type="string", length=100)
+     * @ORM\Column(name="description", type="text")
      */
-    private $category;
+    private $description;
+
     /**
      * @var string
-     * @Assert\NotBlank()
-     * @Assert\Type(
-     * type="float",
-     * message = "Mora biti broj"
-     * )
-     
+     *
+     * @ORM\Column(name="image", type="string", length=255, nullable=true)
+     */
+    private $image;
+
+    /**
+     * @var string
+     *@Assert\Type("decimal")
      * @ORM\Column(name="price", type="decimal", precision=10, scale=2)
      */
     private $price;
+
+    /**
+     * @var int
+     * @Assert\NotBlank()
+     * @ORM\Column(name="category", type="integer")
+     */
+    private $category;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="homepage", type="smallint", nullable=true)
+     */
+    private $homepage;
+
 
     /**
      * Get id
@@ -57,48 +73,79 @@ class Article
     {
         return $this->id;
     }
+
     /**
-     * Set name
+     * Set title
      *
-     * @param string $name
+     * @param string $title
      *
      * @return Article
      */
-    public function setName($name)
+    public function setTitle($title)
     {
-        $this->name = $name;
+        $this->title = $title;
+
         return $this;
     }
+
     /**
-     * Get name
+     * Get title
      *
      * @return string
      */
-    public function getName()
+    public function getTitle()
     {
-        return $this->name;
+        return $this->title;
     }
+
     /**
-     * Set category
+     * Set description
      *
-     * @param string $category
+     * @param string $description
      *
      * @return Article
      */
-    public function setCategory($category)
+    public function setDescription($description)
     {
-        $this->category = $category;
+        $this->description = $description;
+
         return $this;
     }
+
     /**
-     * Get category
+     * Get description
      *
      * @return string
      */
-    public function getCategory()
+    public function getDescription()
     {
-        return $this->category;
+        return $this->description;
     }
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     *
+     * @return Article
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
     /**
      * Set price
      *
@@ -109,8 +156,10 @@ class Article
     public function setPrice($price)
     {
         $this->price = $price;
+
         return $this;
     }
+
     /**
      * Get price
      *
@@ -120,6 +169,53 @@ class Article
     {
         return $this->price;
     }
-    
- 
+
+    /**
+     * Set category
+     *
+     * @param integer $category
+     *
+     * @return Article
+     */
+    public function setCategory($category)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return int
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * Set homepage
+     *
+     * @param integer $homepage
+     *
+     * @return Article
+     */
+    public function setHomepage($homepage)
+    {
+        $this->homepage = $homepage;
+
+        return $this;
+    }
+
+    /**
+     * Get homepage
+     *
+     * @return int
+     */
+    public function getHomepage()
+    {
+        return $this->homepage;
+    }
 }
+

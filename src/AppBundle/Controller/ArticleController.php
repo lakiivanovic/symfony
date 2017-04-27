@@ -31,7 +31,7 @@ class ArticleController extends Controller {
 
         $query = $repository->createQueryBuilder('a')
                 ->where('a.price < 100000000')
-                ->orderBy('a.name', 'DESC')
+                ->orderBy('a.title', 'DESC')
                 ->getQuery();
 
         $artikli = $query->getResult();
