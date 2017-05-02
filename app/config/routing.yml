@@ -36,12 +36,13 @@ article_show:
     requirements:
         id:         '\d+'
         
-user_list:
-    path:       /users/{page}
-    defaults:   { _controller: AppBundle:User:list, page: 1}
-    requirements:
-        page:       '\d+'
-        
-user_create:
-    path:       /user/create
-    defaults:   { _controller: AppBundle:User:create }
+login:
+    path:      /login
+    defaults: { _controller: AppBundle:Security:login}
+    
+logout:
+    path:     /logout
+
+user_registration:
+    path:     /register    
+    defaults:   { _controller: AppBundle:Register:register }
